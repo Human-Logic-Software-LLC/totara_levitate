@@ -1,0 +1,107 @@
+{{!
+   This file is part of Totara Learn
+
+   Copyright (C) 2018 onwards Totara Learning Solutions LTD
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See  the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+   @author Michael Dunstan <michael.dunstan@androgogic.com>
+   @package contentmarketplace_levitate
+}}
+
+{{!
+    @template contentmarketplace_levitate/thumbnail
+
+    Thumbnail to display an individual search result
+
+    Example context (json):
+    {
+        "id": 2190978,
+        "image": "/totara/contentmarketplace/contentmarketplaces/levitate/tests/behat/fixtures/image.jpg",
+        "title": "Search Engines",
+        "delivery": [
+            {
+                "title": "20 HRS"
+            },
+            {
+                "title": "Self paced",
+                "last": true
+            }
+        ],
+        "delivery_has_items": true,
+        "provider": {
+            "name": "E3Learning"
+        },
+        "price": "AUD 1,234.00"
+    }
+}}
+
+<div onclick="view_description(this)">
+    <div class="tcm-levitate-search-thumbnail-img" style="background-image: url('{{ image }}');">
+        <div class="tcm-thumbnail_selection">
+            <input type="checkbox" id="selection-{{id}}" value="{{id}}"/>
+            <label for="selection-{{id}}"><span class="sr-only">{{selectlabel}}</span></label>
+        </div>
+    </div>
+    {{#language}}
+    <div class="tcm-levitate-search-metadata ar">
+        <div  class="tcm-levitate-search-description">
+            <h3>{{ title }}</h3>
+            <div class="tcm-levitate-search-fade"></div>
+            <div class="description">{{ description }}</div>
+            
+        </div>
+        <div class="tcm-levitate-search-text-metadata">
+            <span class="tcm-levitate-search-location">{{#flex_icon}}contentmarketplace_levitate|online{{/flex_icon}} {{#delivery}}{{ title }} {{/delivery}}</span>
+            <span class="tcm-levitate-search-price pull-right"></span>
+        </div>
+        <div class="tcm-levitate-search-icon-metadata">
+            {{#is_in_collection}}
+                {{#flex_icon}}file-ebook, in_collection, totara_contentmarketplace, tcm-search-metadata-icon{{/flex_icon}}
+            {{/is_in_collection}}
+        </div>
+    </div>
+    {{/language}}
+    {{^language}}
+    <div class="tcm-levitate-search-metadata">
+        <div  class="tcm-levitate-search-description">
+            <h3>{{ title }}</h3>
+            <div class="tcm-levitate-search-fade"></div>
+            <div class="description">{{ description }}</div>
+            
+        </div>
+        <div class="tcm-levitate-search-text-metadata">
+            <span class="tcm-levitate-search-location">{{#flex_icon}}contentmarketplace_levitate|online{{/flex_icon}} {{#delivery}}{{ title }} {{/delivery}}</span>
+            <span class="tcm-levitate-search-price pull-right"></span>
+        </div>
+        <div class="tcm-levitate-search-icon-metadata">
+            {{#is_in_collection}}
+                {{#flex_icon}}file-ebook, in_collection, totara_contentmarketplace, tcm-search-metadata-icon{{/flex_icon}}
+            {{/is_in_collection}}
+        </div>
+    </div>
+     {{/language}}
+     <p class="learning_objectives" style="display:none">{{learning_objectives}}</p>
+</div>
+
+{{#js}}
+require(['jquery'], function($){
+alert("hello");
+$(".tcm-search-filter-name-provider > legend > span").text('Category');
+
+});
+{{/js}}    
+            
+            
+           
