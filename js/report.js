@@ -805,11 +805,8 @@ function process_data(returnArray){
 }
 function get_analytics_data(domainvalue, callback) {
     var windowurl = window.location.href;
-    let siteurl = windowurl.split("/totara");
-    // console.log(siteurl);
-    siteurl = siteurl[0].concat('/totara/contentmarketplace/contentmarketplaces/levitate/get_token.php');
-//    console.log(siteurl);
-    // siteurl = 'https://'+siteurl;
+    let siteurl = windowurl.split("/contentmarketplaces/levitate");
+    siteurl = siteurl[0].concat('/contentmarketplaces/levitate/get_token.php');
     $.ajax({url: siteurl,
         success: function(response){
             // console.log(response);
