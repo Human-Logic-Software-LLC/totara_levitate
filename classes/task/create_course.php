@@ -237,41 +237,41 @@ class create_course extends \core\task\scheduled_task {
                 /**added by human-logic **/
                 $course->summary = clean_text($learningobject->course_description); 
                 $course->summaryformat = 1;
-               $DB->update_record('course',$course);
+              //  $DB->update_record('course',$course);
         
                 //below code is added by human-logic to upload images in course summary
-                if($learningobject->imageURL)
-                {
-                  $context = \context_course::instance($course->id);
-                  $fs = get_file_storage();
-                  $rc = [
-                      'contextid' => $context->id,
-                      'component' => 'course',
-                      'filearea' => 'images',
-                      'filepath' => '/',
-                      'itemid' => 0,
-                      'license' => 'public'
-                      ];
-                  $fs->delete_area_files($context->id, 'course', 'images');
-                  $fs->create_file_from_url($rc,$learningobject->imageURL,null,true);
-                }
+                // if($learningobject->imageURL)
+                // {
+                //   $context = \context_course::instance($course->id);
+                //   $fs = get_file_storage();
+                //   $rc = [
+                //       'contextid' => $context->id,
+                //       'component' => 'course',
+                //       'filearea' => 'images',
+                //       'filepath' => '/',
+                //       'itemid' => 0,
+                //       'license' => 'public'
+                //       ];
+                //   $fs->delete_area_files($context->id, 'course', 'images');
+                //   $fs->create_file_from_url($rc,$learningobject->imageURL,null,true);
+                // }
         
                 //below code is added by human-logic to upload images in course overviewfiles
-                if($learningobject->imageURL)
-                {
-                  $context = \context_course::instance($course->id);
-                  $fs = get_file_storage();
-                  $rc = [
-                      'contextid' => $context->id,
-                      'component' => 'course',
-                      'filearea' => 'overviewfiles',
-                      'filepath' => '/',
-                      'itemid' => 0,
-                      'license' => 'public'
-                      ];
-                  $fs->delete_area_files($context->id, 'course', 'overviewfiles');
-                  $fs->create_file_from_url($rc,$learningobject->imageURL,null,true);
-                }
+                // if($learningobject->imageURL)
+                // {
+                //   $context = \context_course::instance($course->id);
+                //   $fs = get_file_storage();
+                //   $rc = [
+                //       'contextid' => $context->id,
+                //       'component' => 'course',
+                //       'filearea' => 'overviewfiles',
+                //       'filepath' => '/',
+                //       'itemid' => 0,
+                //       'license' => 'public'
+                //       ];
+                //   $fs->delete_area_files($context->id, 'course', 'overviewfiles');
+                //   $fs->create_file_from_url($rc,$learningobject->imageURL,null,true);
+                // }
               /**/
                   $title = clean_param($learningobject->title, !empty($CFG->formatstringstriptags) ? PARAM_TEXT : PARAM_CLEANHTML);
                   $descriptionhtml = clean_text($learningobject->course_description);
@@ -362,5 +362,3 @@ class create_course extends \core\task\scheduled_task {
         }
     }
 }
-
-
