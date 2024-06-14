@@ -190,7 +190,7 @@ final class api {
     public function get_learning_objects(array $params = []) {
         global $DB,$USER,$PAGE,$CFG;
         $titleparam='';
-        $filterparams='';
+        $filterparams=new \stdClass();
         $this->check_processing_cache_timer();
         // $PAGE->requires->css($CFG->wwwroot.'/totara/contentmarketplace/contentmarketplaces/levitate/less/roots.less'); 
         //$PAGE->requires->js(new moodle_url($CFG->wwwroot.'/totara/contentmarketplace/contentmarketplaces/levitate/module.js'));
