@@ -326,7 +326,7 @@ final class search extends \totara_contentmarketplace\local\contentmarketplace\s
             $learningobject = $api->get_learning_object($id);
             $learningobject->description = $learningobject->course_description;
             unset($learningobject->course_description);
-            // $temp =  new stdClass();
+            $temp =  new \stdClass();
             
             $temp->duration =$learningobject->learning_time;
             $temp->duration_label = $temp->duration." • ";
@@ -334,7 +334,7 @@ final class search extends \totara_contentmarketplace\local\contentmarketplace\s
             $learningobject->delivery =$temp;
             $learningobject->image = $learningobject->imageURL;
             unset($learningobject->imageURL);
-            // $provider_temp = new stdClass();
+            $provider_temp = new \stdClass();
             $provider_temp->id = 1;
             $provider_temp->logo = "https://media.levitatestatic.com/image/upload/v1658477586/u5ofcre9gznztrv7wiqz.jpg";
             $provider_temp->name = "Human Logic";
